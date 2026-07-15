@@ -345,6 +345,7 @@
 </section>
 
 <footer>
+  <span id="lastUpdated"></span>
   DeFlock Utah is an independent civic-transparency project, not affiliated with Flock Safety, DeFlock.me, or the State of Utah.
   Status marked "unknown" means no public record was found during this research pass — it does not mean a city has no cameras.
   Data compiled July 2026 from the sources linked above. Utah retention/search-policy baseline: Utah Code §41-6a-2005 (nine-month data retention cap).
@@ -352,656 +353,59 @@
 </footer>
 
 <script>
-/* ══════════════════════════════════════════════════════════════════
-   ✏️  EDIT ZONE — this is the only part of the file you need to touch
-   ══════════════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════
+   DeFlock Utah — GitHub Pages build
+   Data lives in:  data/records.json  (the file you edit)
+                   data/municipalities.json  (base list, don't edit)
+   ════════════════════════════════════════════════════════════ */
 
-   1. FORM_URL: paste your Google Form link between the quotes.
+let FORM_URL = "#";
+let DATA = [];
 
-   2. RECORDS: one entry per city that has ALPR info. To add a city,
-      copy the TEMPLATE below, paste it inside RECORDS, and fill it in.
-      The city name (the part before the colon) must EXACTLY match the
-      name in the base list — e.g. "Clinton", "West Valley City",
-      "St. George". Any city NOT listed here automatically shows as
-      "No record found yet".
+async function loadData(){
+  try{
+    const [baseRes, recRes] = await Promise.all([
+      fetch("data/municipalities.json", {cache:"no-cache"}),
+      fetch("data/records.json", {cache:"no-cache"})
+    ]);
+    if(!baseRes.ok || !recRes.ok) throw new Error("HTTP " + baseRes.status + "/" + recRes.status);
+    const BASE = await baseRes.json();
+    const recFile = await recRes.json();
+    FORM_URL = recFile.formUrl || "#";
+    const RECORDS = recFile.records || {};
 
-      Field guide:
-      • status:   "flock"        = confirmed Flock Safety
-                  "alpr_other"   = confirmed ALPR, different/unknown vendor
-                  "none"         = city confirmed it has NO ALPR cameras
-      • cameras:  a number, or delete the line if unknown
-      • submitted: true  → shows the green "Submitted by city/resident" badge
-      • documents.type: "policy", "financial", "contract", "minutes", or "other"
-      • Every field except status is optional — delete lines you don't need.
-      • Punctuation matters: keep the quotes, colons, commas, and brackets
-        exactly as in the template. A missing comma will blank the page —
-        if that happens, undo your last edit.
+    // Warn (in console) about record keys that don't match any city
+    const names = new Set(BASE.map(b=>b.name));
+    Object.keys(RECORDS).forEach(k=>{
+      if(!names.has(k)) console.warn("records.json: \"" + k + "\" does not match any city in municipalities.json — entry ignored");
+    });
 
-   TEMPLATE (copy from here) ──────────────────────────────────────────
+    DATA = BASE.map(b => Object.assign({
+      status:"unknown", agency:null, vendor:null, cameras:null,
+      since:null, financial:null, note:null, submitted:false,
+      submittedNote:null, documents:[], sources:[]
+    }, b, RECORDS[b.name] || {}));
 
-  "CityName": {
-    "status": "flock",
-    "agency": "CityName Police Department",
-    "vendor": "Flock Safety",
-    "cameras": 5,
-    "since": "2025",
-    "financial": "$25,000/yr contract",
-    "note": "Anything worth flagging, e.g. retention period.",
-    "submitted": true,
-    "submittedNote": "Documents provided by City of X.",
-    "documents": [
-      { "type": "policy",    "label": "ALPR policy (PDF)",       "url": "https://..." },
-      { "type": "financial", "label": "Flock contract (PDF)",    "url": "https://..." }
-    ],
-    "sources": [
-      { "label": "City council minutes, Jan 2026", "url": "https://..." }
-    ]
-  },
+    if(recFile.lastUpdated){
+      const f = document.getElementById("lastUpdated");
+      if(f) f.textContent = "Data last updated " + recFile.lastUpdated + ". ";
+    }
 
-   ────────────────────────────────────────────────────────────────── */
-
-const FORM_URL = "https://forms.gle/REPLACE_WITH_YOUR_FORM_ID";
-
-const RECORDS = {
-  "Alpine": {
-    "status": "flock",
-    "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
-    "vendor": "Flock Safety",
-    "note": "30-day data retention per agency policy.",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Flock transparency portal",
-        "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Cedar City": {
-    "status": "flock",
-    "agency": "Cedar City Police Department",
-    "vendor": "Flock Safety",
-    "cameras": 44,
-    "since": "by July 2025",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://transparency.flocksafety.com/ut-cedar-city-pd"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Flock transparency portal",
-        "url": "https://transparency.flocksafety.com/ut-cedar-city-pd"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Cedar Hills": {
-    "status": "flock",
-    "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
-    "vendor": "Flock Safety",
-    "note": "30-day data retention per agency policy.",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Flock transparency portal",
-        "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Centerville": {
-    "status": "flock",
-    "agency": "Centerville Police Department",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Clearfield": {
-    "status": "flock",
-    "agency": "Clearfield Police Department",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://clearfield.city/wp-content/uploads/2024/04/ALPR-Special-Use-Permit.pdf"
-      }
-    ],
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Clinton": {
-    "status": "flock",
-    "agency": "Clinton Police Department",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "submitted": true,
-    "submittedNote": "Policy and contract/financial documents provided directly by Clinton City.",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Clinton City ALPR policy (PDF)",
-        "url": "REPLACE_WITH_CLINTON_POLICY_URL"
-      },
-      {
-        "type": "financial",
-        "label": "Flock Safety contract / financial terms (PDF)",
-        "url": "REPLACE_WITH_CLINTON_CONTRACT_URL"
-      }
-    ],
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Grantsville": {
-    "status": "flock",
-    "agency": "Grantsville Police Department",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Highland": {
-    "status": "flock",
-    "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
-    "vendor": "Flock Safety",
-    "cameras": 7,
-    "note": "30-day data retention per agency policy.",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Flock transparency portal",
-        "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Kaysville": {
-    "status": "flock",
-    "agency": "Kaysville Police Department",
-    "vendor": "Flock Safety",
-    "cameras": 5,
-    "since": "Sept. 2025",
-    "sources": [
-      {
-        "label": "Public records (Pittsboro PD Flock shared-devices list)",
-        "url": "https://www.documentcloud.org/documents/26182924-pittsboro-police-department-flock-safety-shared-devices-list/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Loa": {
-    "status": "flock",
-    "agency": "Wayne County Sheriff's Office",
-    "vendor": "Flock Safety",
-    "cameras": 36,
-    "financial": "Utah's #2 Flock spender: $95,100 paid in 2025",
-    "sources": [
-      {
-        "label": "MuckRock public-records release",
-        "url": "https://www.muckrock.com/foi/johnson-county-2662/texas-public-records-act-request-flock-safety-search-audits-network-sharing-and-general-order-johnson-county-sheriff-189749/#files"
-      },
-      {
-        "label": "KUER: Ogden is Utah's biggest Flock spender",
-        "url": "https://www.kuer.org/politics-government/2026-01-21/ogden-is-utahs-biggest-spender-on-flock-cameras-heres-how-the-city-uses-them"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Nephi": {
-    "status": "flock",
-    "agency": "Nephi Police Department / Juab County Sheriff",
-    "vendor": "Flock Safety",
-    "cameras": 3,
-    "since": "Sept. 2025",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "North Ogden": {
-    "status": "flock",
-    "agency": "North Ogden Police Department",
-    "vendor": "Flock Safety",
-    "since": "2023 (trial)",
-    "sources": [
-      {
-        "label": "North Ogden City Council minutes, Apr 2023",
-        "url": "https://cms3.revize.com/revize/northogdencity/Documents/Government/City%20Council/Agendas,%20Minutes,%20And%20Public%20Notices/2023/Minutes/cc041123_final_-_signed.pdf"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "North Salt Lake": {
-    "status": "flock",
-    "agency": "North Salt Lake City Police",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Ogden": {
-    "status": "flock",
-    "agency": "Ogden Police Department",
-    "vendor": "Flock Safety + legacy in-house ALPR (since 2009)",
-    "cameras": 41,
-    "financial": "Utah's #1 Flock spender: $123,000 paid in 2025 (mostly grant-funded)",
-    "note": "30-day retention (stricter than the state's 9-month maximum); searches require a sergeant/Area Tactical Analysis Center and a case number.",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://www.ogdencity.com/DocumentCenter/View/12979/Policy-65-License-Plate-Readerpdf"
-      }
-    ],
-    "sources": [
-      {
-        "label": "KUER: Ogden is Utah's biggest Flock spender",
-        "url": "https://www.kuer.org/politics-government/2026-01-21/ogden-is-utahs-biggest-spender-on-flock-cameras-heres-how-the-city-uses-them"
-      },
-      {
-        "label": "KUTV: ALPR privacy concerns",
-        "url": "https://kutv.com/news/local/automatic-license-plate-reading-cameras-raise-concerns-over-privacy"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Orem": {
-    "status": "flock",
-    "agency": "Orem Police Department",
-    "vendor": "Flock Safety",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Plain City": {
-    "status": "flock",
-    "agency": "Weber County Sheriff's Office (contracted)",
-    "vendor": "Flock Safety",
-    "cameras": 6,
-    "since": "2021",
-    "sources": [
-      {
-        "label": "Plain City Council minutes, Sept 2021",
-        "url": "https://web.archive.org/web/20211018144505/https://plaincityutah.org/wp-content/uploads/2021/10/CC091621M.pdf"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Pleasant Grove": {
-    "status": "flock",
-    "agency": "Pleasant Grove Police Department",
-    "vendor": "Flock Safety",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Provo": {
-    "status": "flock",
-    "agency": "Provo Police Department",
-    "vendor": "Flock Safety",
-    "cameras": 21,
-    "since": "April 2023",
-    "financial": "$75,406 paid to Flock Safety in 2025 (3rd-highest in Utah)",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://www.provo.gov/m/newsflash/Home/Detail/225"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Provo City ALPR FAQ",
-        "url": "https://www.provo.gov/m/newsflash/Home/Detail/225"
-      },
-      {
-        "label": "KUER: Ogden is Utah's biggest Flock spender",
-        "url": "https://www.kuer.org/politics-government/2026-01-21/ogden-is-utahs-biggest-spender-on-flock-cameras-heres-how-the-city-uses-them"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Salem": {
-    "status": "flock",
-    "agency": "Salem Police Department",
-    "vendor": "Flock Safety",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Salina": {
-    "status": "flock",
-    "agency": "Salina City Police Department",
-    "vendor": "Flock Safety",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://www.salina.utah.gov/government/police/index.php"
-      }
-    ],
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Sandy": {
-    "status": "alpr_other",
-    "note": "No confirmed Flock/ALPR deployment found; PD runs a voluntary private-camera registry (\"Virtual Business Watch\"), which is a different technology.",
-    "sources": [
-      {
-        "label": "Sandy City camera registry",
-        "url": "https://www.sandy.utah.gov/departments/police-department/virtual-business-watch"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Saratoga Springs": {
-    "status": "flock",
-    "agency": "Saratoga Springs Police Department",
-    "vendor": "Flock Safety",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://www.saratogasprings-ut.gov/DocumentCenter/View/11922/Automated-License-Plate-Readers-Policy-PDF?bidId="
-      }
-    ],
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "South Jordan": {
-    "status": "alpr_other",
-    "note": "No confirmed ALPR; department has used Geolitica/PredPol predictive-policing software since 2016 (different surveillance technology).",
-    "sources": [
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "South Salt Lake": {
-    "status": "flock",
-    "agency": "South Salt Lake Police",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Spanish Fork": {
-    "status": "flock",
-    "agency": "Spanish Fork Police Department",
-    "vendor": "Flock Safety",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://transparency.flocksafety.com/spanish-fork-ut-pd"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Flock transparency portal",
-        "url": "https://transparency.flocksafety.com/spanish-fork-ut-pd"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Springville": {
-    "status": "flock",
-    "agency": "Springville Police Department",
-    "vendor": "Flock Safety",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "St. George": {
-    "status": "alpr_other",
-    "agency": "St. George Police Dept. & Washington County Sheriff's Office",
-    "vendor": "Unspecified (not confirmed as Flock)",
-    "since": "at least 2012",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://news.washeriff.net/wp-content/uploads/2023/08/Automated_License_Plate_Readers__ALPRs.pdf"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Salt Lake Tribune archive",
-        "url": "https://archive.sltrib.com/article.php?id=54341662&itype=CMSID"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "Tooele": {
-    "status": "flock",
-    "agency": "Tooele City PD & Tooele County Sheriff's Office",
-    "vendor": "Flock Safety",
-    "since": "2022",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://tooelecountysheriff.org/wp-content/uploads/2023/07/Policy-469-ALPRs.pdf"
-      }
-    ],
-    "sources": [
-      {
-        "label": "Fox13: Tooele police utilizing Flock cameras",
-        "url": "https://www.fox13now.com/news/local-news/tooele-police-utilizing-flock-safety-cameras-to-help-curb-crime"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "West Jordan": {
-    "status": "flock",
-    "agency": "West Jordan Police Department",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
-  },
-  "West Valley City": {
-    "status": "flock",
-    "agency": "West Valley City Police Department",
-    "vendor": "Flock Safety",
-    "since": "2025",
-    "documents": [
-      {
-        "type": "policy",
-        "label": "Official policy document",
-        "url": "https://www.wvc-ut.gov/DocumentCenter/View/11639/WVCPD-Policy-Manual-Revised-092425?bidId="
-      }
-    ],
-    "sources": [
-      {
-        "label": "KSL NewsRadio",
-        "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
-      },
-      {
-        "label": "Atlas of Surveillance (EFF)",
-        "url": "https://www.atlasofsurveillance.org/search?location=Utah"
-      }
-    ]
+    renderStatCard();
+    renderChips();
+    renderCountySelect();
+    renderTable();
+  }catch(err){
+    document.getElementById("tableBody").innerHTML =
+      '<div style="padding:30px;font-family:var(--mono);font-size:13px;color:var(--alert-red);border:1px solid var(--alert-red);">' +
+      'Could not load data files (' + err.message + ').<br><br>' +
+      'Most likely cause: a syntax error (usually a missing or extra comma) in <b>data/records.json</b>. ' +
+      'Paste the file into <a href="https://jsonlint.com" target="_blank" style="color:var(--line-yellow)">jsonlint.com</a> to find the exact line, ' +
+      'or use the file history on GitHub to revert the last change.</div>';
+    console.error(err);
   }
-};
+}
 
-/* ══════════════════════════════════════════════════════════════════
-   END OF EDIT ZONE — everything below runs the site; no need to edit
-   ══════════════════════════════════════════════════════════════════ */
-
-const BASE = [{"name":"Alpine","county":"Utah","type":"City","pop":10272},{"name":"Alta","county":"Salt Lake","type":"Town","pop":337},{"name":"Altamont","county":"Duchesne","type":"Town","pop":390},{"name":"Alton","county":"Kane","type":"Town","pop":308},{"name":"Amalga","county":"Cache","type":"Town","pop":486},{"name":"American Fork","county":"Utah","type":"City","pop":35312},{"name":"Annabella","county":"Sevier","type":"Town","pop":719},{"name":"Antimony","county":"Garfield","type":"Town","pop":82},{"name":"Apple Valley","county":"Washington","type":"Town","pop":1399},{"name":"Aurora","county":"Sevier","type":"City","pop":881},{"name":"Ballard","county":"Uintah","type":"Town","pop":1648},{"name":"Bear River City","county":"Box Elder","type":"City","pop":863},{"name":"Beaver","county":"Beaver","type":"City","pop":3632},{"name":"Bicknell","county":"Wayne","type":"Town","pop":383},{"name":"Big Water","county":"Kane","type":"Town","pop":520},{"name":"Blanding","county":"San Juan","type":"City","pop":3303},{"name":"Bluff","county":"San Juan","type":"Town","pop":179},{"name":"Bluffdale","county":"Salt Lake/Utah","type":"City","pop":18168},{"name":"Boulder","county":"Garfield","type":"Town","pop":389},{"name":"Bountiful","county":"Davis","type":"City","pop":45093},{"name":"Brian Head","county":"Iron","type":"Town","pop":49},{"name":"Brigham City","county":"Box Elder","type":"City","pop":19796},{"name":"Brighton","county":"Salt Lake","type":"Town","pop":353},{"name":"Bryce Canyon City","county":"Garfield","type":"Town","pop":216},{"name":"Cannonville","county":"Garfield","type":"Town","pop":226},{"name":"Castle Dale","county":"Emery","type":"City","pop":1463},{"name":"Castle Valley","county":"Grand","type":"Town","pop":348},{"name":"Cedar City","county":"Iron","type":"City","pop":37202},{"name":"Cedar Fort","county":"Utah","type":"Town","pop":174},{"name":"Cedar Hills","county":"Utah","type":"City","pop":9945},{"name":"Centerfield","county":"Sanpete","type":"City","pop":1312},{"name":"Centerville","county":"Davis","type":"City","pop":16692},{"name":"Central Valley","county":"Sevier","type":"Town","pop":686},{"name":"Charleston","county":"Wasatch","type":"Town","pop":484},{"name":"Circleville","county":"Piute","type":"Town","pop":431},{"name":"Clarkston","county":"Cache","type":"Town","pop":596},{"name":"Clawson","county":"Emery","type":"Town","pop":94},{"name":"Clearfield","county":"Davis","type":"City","pop":32895},{"name":"Cleveland","county":"Emery","type":"Town","pop":429},{"name":"Clinton","county":"Davis","type":"City","pop":23492},{"name":"Coalville","county":"Summit","type":"City","pop":1915},{"name":"Copperton","county":"Salt Lake","type":"City","pop":865},{"name":"Corinne","county":"Box Elder","type":"Town","pop":836},{"name":"Cornish","county":"Cache","type":"Town","pop":236},{"name":"Cottonwood Heights","county":"Salt Lake","type":"City","pop":32984},{"name":"Daniel","county":"Wasatch","type":"Town","pop":956},{"name":"Delta","county":"Millard","type":"City","pop":3675},{"name":"Deweyville","county":"Box Elder","type":"Town","pop":345},{"name":"Draper","county":"Salt Lake/Utah","type":"City","pop":50159},{"name":"Duchesne","county":"Duchesne","type":"City","pop":1744},{"name":"Dutch John","county":"Daggett","type":"Town","pop":17},{"name":"Eagle Mountain","county":"Utah","type":"City","pop":49514},{"name":"East Carbon","county":"Carbon","type":"City","pop":1476},{"name":"Elk Ridge","county":"Utah","type":"City","pop":4782},{"name":"Elmo","county":"Emery","type":"Town","pop":433},{"name":"Elsinore","county":"Sevier","type":"Town","pop":760},{"name":"Elwood","county":"Box Elder","type":"Town","pop":1643},{"name":"Emery","county":"Emery","type":"Town","pop":521},{"name":"Emigration Canyon","county":"Salt Lake","type":"City","pop":1465},{"name":"Enoch","county":"Iron","type":"City","pop":7856},{"name":"Enterprise","county":"Washington","type":"City","pop":1543},{"name":"Ephraim","county":"Sanpete","type":"City","pop":5805},{"name":"Erda","county":"Tooele","type":"City","pop":3294},{"name":"Escalante","county":"Garfield","type":"City","pop":625},{"name":"Eureka","county":"Juab","type":"City","pop":941},{"name":"Fairfield","county":"Utah","type":"Town","pop":147},{"name":"Fairview","county":"Sanpete","type":"City","pop":1389},{"name":"Farmington","county":"Davis","type":"City","pop":24934},{"name":"Farr West","county":"Weber","type":"City","pop":7881},{"name":"Fayette","county":"Sanpete","type":"Town","pop":388},{"name":"Ferron","county":"Emery","type":"City","pop":1361},{"name":"Fielding","county":"Box Elder","type":"Town","pop":643},{"name":"Fillmore","county":"Millard","type":"City","pop":2633},{"name":"Fountain Green","county":"Sanpete","type":"City","pop":1539},{"name":"Francis","county":"Summit","type":"Town","pop":1797},{"name":"Fruit Heights","county":"Davis","type":"City","pop":6036},{"name":"Garden City","county":"Rich","type":"Town","pop":545},{"name":"Garland","county":"Box Elder","type":"City","pop":2609},{"name":"Genola","county":"Utah","type":"Town","pop":1766},{"name":"Glendale","county":"Kane","type":"Town","pop":488},{"name":"Glenwood","county":"Sevier","type":"Town","pop":653},{"name":"Goshen","county":"Utah","type":"Town","pop":833},{"name":"Grantsville","county":"Tooele","type":"City","pop":13637},{"name":"Green River","county":"Emery","type":"City","pop":804},{"name":"Gunnison","county":"Sanpete","type":"City","pop":3537},{"name":"Hanksville","county":"Wayne","type":"Town","pop":203},{"name":"Harrisville","county":"Weber","type":"City","pop":6919},{"name":"Hatch","county":"Garfield","type":"Town","pop":119},{"name":"Heber City","county":"Wasatch","type":"City","pop":17438},{"name":"Helper","county":"Carbon","type":"City","pop":2680},{"name":"Henefer","county":"Summit","type":"Town","pop":855},{"name":"Henrieville","county":"Garfield","type":"Town","pop":292},{"name":"Herriman","county":"Salt Lake","type":"City","pop":57336},{"name":"Hideout","county":"Wasatch","type":"Town","pop":1111},{"name":"Highland","county":"Utah","type":"City","pop":19625},{"name":"Hildale","county":"Washington","type":"City","pop":1301},{"name":"Hinckley","county":"Millard","type":"Town","pop":832},{"name":"Holden","county":"Millard","type":"Town","pop":443},{"name":"Holladay","county":"Salt Lake","type":"City","pop":31236},{"name":"Honeyville","county":"Box Elder","type":"City","pop":1383},{"name":"Hooper","county":"Weber","type":"City","pop":9220},{"name":"Howell","county":"Box Elder","type":"Town","pop":323},{"name":"Huntington","county":"Emery","type":"City","pop":2271},{"name":"Huntsville","county":"Weber","type":"Town","pop":493},{"name":"Hurricane","county":"Washington","type":"City","pop":21677},{"name":"Hyde Park","county":"Cache","type":"City","pop":5410},{"name":"Hyrum","county":"Cache","type":"City","pop":10022},{"name":"Independence","county":"Wasatch","type":"Town","pop":71},{"name":"Interlaken","county":"Wasatch","type":"Town","pop":145},{"name":"Ivins","county":"Washington","type":"City","pop":9524},{"name":"Joseph","county":"Sevier","type":"Town","pop":546},{"name":"Junction","county":"Piute","type":"Town","pop":305},{"name":"Kamas","county":"Summit","type":"City","pop":2229},{"name":"Kanab","county":"Kane","type":"City","pop":4950},{"name":"Kanarraville","county":"Iron","type":"Town","pop":304},{"name":"Kanosh","county":"Millard","type":"Town","pop":550},{"name":"Kaysville","county":"Davis","type":"City","pop":32861},{"name":"Kearns","county":"Salt Lake","type":"City","pop":37058},{"name":"Kingston","county":"Piute","type":"Town","pop":329},{"name":"Koosharem","county":"Sevier","type":"Town","pop":294},{"name":"La Verkin","county":"Washington","type":"City","pop":4429},{"name":"Laketown","county":"Rich","type":"Town","pop":420},{"name":"Lake Point","county":"Tooele","type":"City","pop":2938},{"name":"Layton","county":"Davis","type":"City","pop":82512},{"name":"Leamington","county":"Millard","type":"Town","pop":301},{"name":"Leeds","county":"Washington","type":"Town","pop":693},{"name":"Lehi","county":"Utah","type":"City","pop":81039},{"name":"Levan","county":"Juab","type":"Town","pop":886},{"name":"Lewiston","county":"Cache","type":"City","pop":2225},{"name":"Lindon","county":"Utah","type":"City","pop":11594},{"name":"Loa","county":"Wayne","type":"Town","pop":597},{"name":"Logan","county":"Cache","type":"City","pop":53923},{"name":"Lyman","county":"Wayne","type":"Town","pop":235},{"name":"Lynndyl","county":"Millard","type":"Town","pop":142},{"name":"Magna","county":"Salt Lake","type":"City","pop":29488},{"name":"Manila","county":"Daggett","type":"Town","pop":425},{"name":"Manti","county":"Sanpete","type":"City","pop":3532},{"name":"Mantua","county":"Box Elder","type":"Town","pop":1642},{"name":"Mapleton","county":"Utah","type":"City","pop":12340},{"name":"Marriott-Slaterville","county":"Weber","type":"City","pop":1885},{"name":"Marysvale","county":"Piute","type":"Town","pop":522},{"name":"Mayfield","county":"Sanpete","type":"Town","pop":424},{"name":"Meadow","county":"Millard","type":"Town","pop":246},{"name":"Mendon","county":"Cache","type":"City","pop":1446},{"name":"Midvale","county":"Salt Lake","type":"City","pop":35736},{"name":"Midway","county":"Wasatch","type":"City","pop":6110},{"name":"Milford","county":"Beaver","type":"City","pop":1400},{"name":"Millcreek","county":"Salt Lake","type":"City","pop":63342},{"name":"Millville","county":"Cache","type":"City","pop":1820},{"name":"Minersville","county":"Beaver","type":"Town","pop":901},{"name":"Moab","county":"Grand","type":"City","pop":5316},{"name":"Mona","county":"Juab","type":"City","pop":1647},{"name":"Monroe","county":"Sevier","type":"City","pop":2570},{"name":"Monticello","county":"San Juan","type":"City","pop":1941},{"name":"Morgan","county":"Morgan","type":"City","pop":4268},{"name":"Moroni","county":"Sanpete","type":"City","pop":1238},{"name":"Mount Pleasant","county":"Sanpete","type":"City","pop":3737},{"name":"Murray","county":"Salt Lake","type":"City","pop":49904},{"name":"Myton","county":"Duchesne","type":"City","pop":662},{"name":"Naples","county":"Uintah","type":"City","pop":3217},{"name":"Nephi","county":"Juab","type":"City","pop":6700},{"name":"New Harmony","county":"Washington","type":"Town","pop":353},{"name":"Newton","county":"Cache","type":"Town","pop":899},{"name":"Nibley","county":"Cache","type":"City","pop":7651},{"name":"North Logan","county":"Cache","type":"City","pop":11228},{"name":"North Ogden","county":"Weber","type":"City","pop":21473},{"name":"North Salt Lake","county":"Davis","type":"City","pop":23239},{"name":"Oak City","county":"Millard","type":"Town","pop":770},{"name":"Oakley","county":"Summit","type":"City","pop":1812},{"name":"Ogden","county":"Weber","type":"City","pop":86973},{"name":"Orangeville","county":"Emery","type":"City","pop":1281},{"name":"Orderville","county":"Kane","type":"Town","pop":865},{"name":"Orem","county":"Utah","type":"City","pop":97048},{"name":"Panguitch","county":"Garfield","type":"City","pop":1871},{"name":"Paradise","county":"Cache","type":"Town","pop":806},{"name":"Paragonah","county":"Iron","type":"Town","pop":678},{"name":"Park City","county":"Summit/Wasatch","type":"City","pop":8365},{"name":"Parowan","county":"Iron","type":"City","pop":3095},{"name":"Payson","county":"Utah","type":"City","pop":22205},{"name":"Perry","county":"Box Elder","type":"City","pop":5708},{"name":"Plain City","county":"Weber","type":"City","pop":8101},{"name":"Pleasant Grove","county":"Utah","type":"City","pop":37544},{"name":"Pleasant View","county":"Weber","type":"City","pop":11104},{"name":"Plymouth","county":"Box Elder","type":"Town","pop":394},{"name":"Portage","county":"Box Elder","type":"Town","pop":223},{"name":"Price","county":"Carbon","type":"City","pop":8216},{"name":"Providence","county":"Cache","type":"City","pop":8675},{"name":"Provo","county":"Utah","type":"City","pop":114303},{"name":"Randolph","county":"Rich","type":"Town","pop":772},{"name":"Redmond","county":"Sevier","type":"Town","pop":773},{"name":"Richfield","county":"Sevier","type":"City","pop":8173},{"name":"Richmond","county":"Cache","type":"City","pop":2971},{"name":"Riverdale","county":"Weber","type":"City","pop":2179},{"name":"River Heights","county":"Cache","type":"City","pop":9294},{"name":"Riverton","county":"Salt Lake","type":"City","pop":44944},{"name":"Rockville","county":"Washington","type":"Town","pop":169},{"name":"Rocky Ridge","county":"Juab","type":"Town","pop":901},{"name":"Roosevelt","county":"Duchesne","type":"City","pop":6960},{"name":"Roy","county":"Weber","type":"City","pop":39021},{"name":"Rush Valley","county":"Tooele","type":"Town","pop":425},{"name":"Salem","county":"Utah","type":"City","pop":9893},{"name":"Salina","county":"Sevier","type":"City","pop":2521},{"name":"Salt Lake City","county":"Salt Lake","type":"City","pop":203888},{"name":"Sandy","county":"Salt Lake","type":"City","pop":94723},{"name":"Santa Clara","county":"Washington","type":"City","pop":7891},{"name":"Santaquin","county":"Utah/Juab","type":"City","pop":15391},{"name":"Saratoga Springs","county":"Utah","type":"City","pop":44070},{"name":"Scipio","county":"Millard","type":"Town","pop":435},{"name":"Scofield","county":"Carbon","type":"Town","pop":33},{"name":"Sigurd","county":"Sevier","type":"Town","pop":453},{"name":"Smithfield","county":"Cache","type":"City","pop":14033},{"name":"Snowville","county":"Box Elder","type":"Town","pop":246},{"name":"South Jordan","county":"Salt Lake","type":"City","pop":80331},{"name":"South Ogden","county":"Weber","type":"City","pop":17563},{"name":"South Salt Lake","county":"Salt Lake","type":"City","pop":26277},{"name":"South Weber","county":"Davis","type":"City","pop":8037},{"name":"Spanish Fork","county":"Utah","type":"City","pop":43632},{"name":"Spring City","county":"Sanpete","type":"City","pop":1094},{"name":"Springdale","county":"Washington","type":"Town","pop":416},{"name":"Springville","county":"Utah","type":"City","pop":35474},{"name":"St. George","county":"Washington","type":"City","pop":99184},{"name":"Sterling","county":"Sanpete","type":"Town","pop":303},{"name":"Stockton","county":"Tooele","type":"Town","pop":897},{"name":"Sunset","county":"Davis","type":"City","pop":5567},{"name":"Syracuse","county":"Davis","type":"City","pop":34009},{"name":"Tabiona","county":"Duchesne","type":"Town","pop":157},{"name":"Taylorsville","county":"Salt Lake","type":"City","pop":59010},{"name":"Tooele","county":"Tooele","type":"City","pop":37265},{"name":"Toquerville","county":"Washington","type":"City","pop":2115},{"name":"Torrey","county":"Wayne","type":"Town","pop":332},{"name":"Tremonton","county":"Box Elder","type":"City","pop":10886},{"name":"Trenton","county":"Cache","type":"Town","pop":534},{"name":"Tropic","county":"Garfield","type":"Town","pop":537},{"name":"Uintah","county":"Weber","type":"City","pop":1461},{"name":"Vernal","county":"Uintah","type":"City","pop":10254},{"name":"Vernon","county":"Tooele","type":"Town","pop":324},{"name":"Vineyard","county":"Utah","type":"City","pop":13510},{"name":"Virgin","county":"Washington","type":"Town","pop":734},{"name":"Wales","county":"Sanpete","type":"Town","pop":345},{"name":"Wallsburg","county":"Wasatch","type":"Town","pop":266},{"name":"Washington","county":"Washington","type":"City","pop":30686},{"name":"Washington Terrace","county":"Weber","type":"City","pop":9196},{"name":"Wellington","county":"Carbon","type":"City","pop":1526},{"name":"Wellsville","county":"Cache","type":"City","pop":4120},{"name":"Wendover","county":"Tooele","type":"City","pop":1264},{"name":"West Bountiful","county":"Davis","type":"City","pop":5920},{"name":"West Haven","county":"Weber","type":"City","pop":19977},{"name":"West Jordan","county":"Salt Lake","type":"City","pop":116277},{"name":"West Point","county":"Davis","type":"City","pop":11559},{"name":"West Valley City","county":"Salt Lake","type":"City","pop":137955},{"name":"White City","county":"Salt Lake","type":"City","pop":5568},{"name":"Willard","county":"Box Elder","type":"City","pop":2008},{"name":"Woodland Hills","county":"Utah","type":"City","pop":1439},{"name":"Woodruff","county":"Rich","type":"Town","pop":302},{"name":"Woods Cross","county":"Davis","type":"City","pop":11490}];
 
 const DATA = BASE.map(b => {
   const rec = RECORDS[b.name] || {};
@@ -1056,8 +460,8 @@ function renderChips(){
   el.querySelectorAll(".chip").forEach(chip=>{
     chip.addEventListener("click", ()=>{
       state.status = chip.dataset.status;
-      renderChips();
-      renderTable();
+      
+      
     });
   });
 }
@@ -1069,7 +473,7 @@ function renderCountySelect(){
     opt.value = c; opt.textContent = c + " County";
     sel.appendChild(opt);
   });
-  sel.addEventListener("change", ()=>{ state.county = sel.value; renderTable(); });
+  sel.addEventListener("change", ()=>{ state.county = sel.value;  });
 }
 
 function fmtField(label, value){
@@ -1170,17 +574,19 @@ function renderTable(){
 
 document.getElementById("search").addEventListener("input", (e)=>{
   state.q = e.target.value;
-  renderTable();
+  
 });
 document.getElementById("sortSel").addEventListener("change", (e)=>{
   state.sort = e.target.value;
-  renderTable();
+  
 });
 
-renderStatCard();
-renderChips();
-renderCountySelect();
-renderTable();
+
+
+
+
+
+loadData();
 </script>
 </body>
 </html>
