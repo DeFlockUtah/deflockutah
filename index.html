@@ -362,15 +362,22 @@
 let FORM_URL = "#";
 let DATA = [];
 
+async function fetchJSON(path){
+  const res = await fetch(path, {cache:"no-cache"});
+  if(!res.ok) throw new Error(path + " could not be fetched (HTTP " + res.status + " — is the file missing or misnamed?)");
+  const text = await res.text();
+  if(!text.trim()) throw new Error(path + " is empty — the file upload or paste didn't complete.");
+  try{
+    return JSON.parse(text);
+  }catch(e){
+    throw new Error(path + " has a JSON syntax error: " + e.message);
+  }
+}
+
 async function loadData(){
   try{
-    const [baseRes, recRes] = await Promise.all([
-      fetch("data/municipalities.json", {cache:"no-cache"}),
-      fetch("data/records.json", {cache:"no-cache"})
-    ]);
-    if(!baseRes.ok || !recRes.ok) throw new Error("HTTP " + baseRes.status + "/" + recRes.status);
-    const BASE = await baseRes.json();
-    const recFile = await recRes.json();
+    const BASE = await fetchJSON("data/municipalities.json");
+    const recFile = await fetchJSON("data/records.json");
     FORM_URL = recFile.formUrl || "#";
     const RECORDS = recFile.records || {};
 
