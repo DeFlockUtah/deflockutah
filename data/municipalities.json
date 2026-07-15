@@ -1,0 +1,1532 @@
+[
+ {
+  "name": "Alpine",
+  "county": "Utah",
+  "type": "City",
+  "pop": 10272
+ },
+ {
+  "name": "Alta",
+  "county": "Salt Lake",
+  "type": "Town",
+  "pop": 337
+ },
+ {
+  "name": "Altamont",
+  "county": "Duchesne",
+  "type": "Town",
+  "pop": 390
+ },
+ {
+  "name": "Alton",
+  "county": "Kane",
+  "type": "Town",
+  "pop": 308
+ },
+ {
+  "name": "Amalga",
+  "county": "Cache",
+  "type": "Town",
+  "pop": 486
+ },
+ {
+  "name": "American Fork",
+  "county": "Utah",
+  "type": "City",
+  "pop": 35312
+ },
+ {
+  "name": "Annabella",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 719
+ },
+ {
+  "name": "Antimony",
+  "county": "Garfield",
+  "type": "Town",
+  "pop": 82
+ },
+ {
+  "name": "Apple Valley",
+  "county": "Washington",
+  "type": "Town",
+  "pop": 1399
+ },
+ {
+  "name": "Aurora",
+  "county": "Sevier",
+  "type": "City",
+  "pop": 881
+ },
+ {
+  "name": "Ballard",
+  "county": "Uintah",
+  "type": "Town",
+  "pop": 1648
+ },
+ {
+  "name": "Bear River City",
+  "county": "Box Elder",
+  "type": "City",
+  "pop": 863
+ },
+ {
+  "name": "Beaver",
+  "county": "Beaver",
+  "type": "City",
+  "pop": 3632
+ },
+ {
+  "name": "Bicknell",
+  "county": "Wayne",
+  "type": "Town",
+  "pop": 383
+ },
+ {
+  "name": "Big Water",
+  "county": "Kane",
+  "type": "Town",
+  "pop": 520
+ },
+ {
+  "name": "Blanding",
+  "county": "San Juan",
+  "type": "City",
+  "pop": 3303
+ },
+ {
+  "name": "Bluff",
+  "county": "San Juan",
+  "type": "Town",
+  "pop": 179
+ },
+ {
+  "name": "Bluffdale",
+  "county": "Salt Lake/Utah",
+  "type": "City",
+  "pop": 18168
+ },
+ {
+  "name": "Boulder",
+  "county": "Garfield",
+  "type": "Town",
+  "pop": 389
+ },
+ {
+  "name": "Bountiful",
+  "county": "Davis",
+  "type": "City",
+  "pop": 45093
+ },
+ {
+  "name": "Brian Head",
+  "county": "Iron",
+  "type": "Town",
+  "pop": 49
+ },
+ {
+  "name": "Brigham City",
+  "county": "Box Elder",
+  "type": "City",
+  "pop": 19796
+ },
+ {
+  "name": "Brighton",
+  "county": "Salt Lake",
+  "type": "Town",
+  "pop": 353
+ },
+ {
+  "name": "Bryce Canyon City",
+  "county": "Garfield",
+  "type": "Town",
+  "pop": 216
+ },
+ {
+  "name": "Cannonville",
+  "county": "Garfield",
+  "type": "Town",
+  "pop": 226
+ },
+ {
+  "name": "Castle Dale",
+  "county": "Emery",
+  "type": "City",
+  "pop": 1463
+ },
+ {
+  "name": "Castle Valley",
+  "county": "Grand",
+  "type": "Town",
+  "pop": 348
+ },
+ {
+  "name": "Cedar City",
+  "county": "Iron",
+  "type": "City",
+  "pop": 37202
+ },
+ {
+  "name": "Cedar Fort",
+  "county": "Utah",
+  "type": "Town",
+  "pop": 174
+ },
+ {
+  "name": "Cedar Hills",
+  "county": "Utah",
+  "type": "City",
+  "pop": 9945
+ },
+ {
+  "name": "Centerfield",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 1312
+ },
+ {
+  "name": "Centerville",
+  "county": "Davis",
+  "type": "City",
+  "pop": 16692
+ },
+ {
+  "name": "Central Valley",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 686
+ },
+ {
+  "name": "Charleston",
+  "county": "Wasatch",
+  "type": "Town",
+  "pop": 484
+ },
+ {
+  "name": "Circleville",
+  "county": "Piute",
+  "type": "Town",
+  "pop": 431
+ },
+ {
+  "name": "Clarkston",
+  "county": "Cache",
+  "type": "Town",
+  "pop": 596
+ },
+ {
+  "name": "Clawson",
+  "county": "Emery",
+  "type": "Town",
+  "pop": 94
+ },
+ {
+  "name": "Clearfield",
+  "county": "Davis",
+  "type": "City",
+  "pop": 32895
+ },
+ {
+  "name": "Cleveland",
+  "county": "Emery",
+  "type": "Town",
+  "pop": 429
+ },
+ {
+  "name": "Clinton",
+  "county": "Davis",
+  "type": "City",
+  "pop": 23492
+ },
+ {
+  "name": "Coalville",
+  "county": "Summit",
+  "type": "City",
+  "pop": 1915
+ },
+ {
+  "name": "Copperton",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 865
+ },
+ {
+  "name": "Corinne",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 836
+ },
+ {
+  "name": "Cornish",
+  "county": "Cache",
+  "type": "Town",
+  "pop": 236
+ },
+ {
+  "name": "Cottonwood Heights",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 32984
+ },
+ {
+  "name": "Daniel",
+  "county": "Wasatch",
+  "type": "Town",
+  "pop": 956
+ },
+ {
+  "name": "Delta",
+  "county": "Millard",
+  "type": "City",
+  "pop": 3675
+ },
+ {
+  "name": "Deweyville",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 345
+ },
+ {
+  "name": "Draper",
+  "county": "Salt Lake/Utah",
+  "type": "City",
+  "pop": 50159
+ },
+ {
+  "name": "Duchesne",
+  "county": "Duchesne",
+  "type": "City",
+  "pop": 1744
+ },
+ {
+  "name": "Dutch John",
+  "county": "Daggett",
+  "type": "Town",
+  "pop": 17
+ },
+ {
+  "name": "Eagle Mountain",
+  "county": "Utah",
+  "type": "City",
+  "pop": 49514
+ },
+ {
+  "name": "East Carbon",
+  "county": "Carbon",
+  "type": "City",
+  "pop": 1476
+ },
+ {
+  "name": "Elk Ridge",
+  "county": "Utah",
+  "type": "City",
+  "pop": 4782
+ },
+ {
+  "name": "Elmo",
+  "county": "Emery",
+  "type": "Town",
+  "pop": 433
+ },
+ {
+  "name": "Elsinore",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 760
+ },
+ {
+  "name": "Elwood",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 1643
+ },
+ {
+  "name": "Emery",
+  "county": "Emery",
+  "type": "Town",
+  "pop": 521
+ },
+ {
+  "name": "Emigration Canyon",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 1465
+ },
+ {
+  "name": "Enoch",
+  "county": "Iron",
+  "type": "City",
+  "pop": 7856
+ },
+ {
+  "name": "Enterprise",
+  "county": "Washington",
+  "type": "City",
+  "pop": 1543
+ },
+ {
+  "name": "Ephraim",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 5805
+ },
+ {
+  "name": "Erda",
+  "county": "Tooele",
+  "type": "City",
+  "pop": 3294
+ },
+ {
+  "name": "Escalante",
+  "county": "Garfield",
+  "type": "City",
+  "pop": 625
+ },
+ {
+  "name": "Eureka",
+  "county": "Juab",
+  "type": "City",
+  "pop": 941
+ },
+ {
+  "name": "Fairfield",
+  "county": "Utah",
+  "type": "Town",
+  "pop": 147
+ },
+ {
+  "name": "Fairview",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 1389
+ },
+ {
+  "name": "Farmington",
+  "county": "Davis",
+  "type": "City",
+  "pop": 24934
+ },
+ {
+  "name": "Farr West",
+  "county": "Weber",
+  "type": "City",
+  "pop": 7881
+ },
+ {
+  "name": "Fayette",
+  "county": "Sanpete",
+  "type": "Town",
+  "pop": 388
+ },
+ {
+  "name": "Ferron",
+  "county": "Emery",
+  "type": "City",
+  "pop": 1361
+ },
+ {
+  "name": "Fielding",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 643
+ },
+ {
+  "name": "Fillmore",
+  "county": "Millard",
+  "type": "City",
+  "pop": 2633
+ },
+ {
+  "name": "Fountain Green",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 1539
+ },
+ {
+  "name": "Francis",
+  "county": "Summit",
+  "type": "Town",
+  "pop": 1797
+ },
+ {
+  "name": "Fruit Heights",
+  "county": "Davis",
+  "type": "City",
+  "pop": 6036
+ },
+ {
+  "name": "Garden City",
+  "county": "Rich",
+  "type": "Town",
+  "pop": 545
+ },
+ {
+  "name": "Garland",
+  "county": "Box Elder",
+  "type": "City",
+  "pop": 2609
+ },
+ {
+  "name": "Genola",
+  "county": "Utah",
+  "type": "Town",
+  "pop": 1766
+ },
+ {
+  "name": "Glendale",
+  "county": "Kane",
+  "type": "Town",
+  "pop": 488
+ },
+ {
+  "name": "Glenwood",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 653
+ },
+ {
+  "name": "Goshen",
+  "county": "Utah",
+  "type": "Town",
+  "pop": 833
+ },
+ {
+  "name": "Grantsville",
+  "county": "Tooele",
+  "type": "City",
+  "pop": 13637
+ },
+ {
+  "name": "Green River",
+  "county": "Emery",
+  "type": "City",
+  "pop": 804
+ },
+ {
+  "name": "Gunnison",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 3537
+ },
+ {
+  "name": "Hanksville",
+  "county": "Wayne",
+  "type": "Town",
+  "pop": 203
+ },
+ {
+  "name": "Harrisville",
+  "county": "Weber",
+  "type": "City",
+  "pop": 6919
+ },
+ {
+  "name": "Hatch",
+  "county": "Garfield",
+  "type": "Town",
+  "pop": 119
+ },
+ {
+  "name": "Heber City",
+  "county": "Wasatch",
+  "type": "City",
+  "pop": 17438
+ },
+ {
+  "name": "Helper",
+  "county": "Carbon",
+  "type": "City",
+  "pop": 2680
+ },
+ {
+  "name": "Henefer",
+  "county": "Summit",
+  "type": "Town",
+  "pop": 855
+ },
+ {
+  "name": "Henrieville",
+  "county": "Garfield",
+  "type": "Town",
+  "pop": 292
+ },
+ {
+  "name": "Herriman",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 57336
+ },
+ {
+  "name": "Hideout",
+  "county": "Wasatch",
+  "type": "Town",
+  "pop": 1111
+ },
+ {
+  "name": "Highland",
+  "county": "Utah",
+  "type": "City",
+  "pop": 19625
+ },
+ {
+  "name": "Hildale",
+  "county": "Washington",
+  "type": "City",
+  "pop": 1301
+ },
+ {
+  "name": "Hinckley",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 832
+ },
+ {
+  "name": "Holden",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 443
+ },
+ {
+  "name": "Holladay",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 31236
+ },
+ {
+  "name": "Honeyville",
+  "county": "Box Elder",
+  "type": "City",
+  "pop": 1383
+ },
+ {
+  "name": "Hooper",
+  "county": "Weber",
+  "type": "City",
+  "pop": 9220
+ },
+ {
+  "name": "Howell",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 323
+ },
+ {
+  "name": "Huntington",
+  "county": "Emery",
+  "type": "City",
+  "pop": 2271
+ },
+ {
+  "name": "Huntsville",
+  "county": "Weber",
+  "type": "Town",
+  "pop": 493
+ },
+ {
+  "name": "Hurricane",
+  "county": "Washington",
+  "type": "City",
+  "pop": 21677
+ },
+ {
+  "name": "Hyde Park",
+  "county": "Cache",
+  "type": "City",
+  "pop": 5410
+ },
+ {
+  "name": "Hyrum",
+  "county": "Cache",
+  "type": "City",
+  "pop": 10022
+ },
+ {
+  "name": "Independence",
+  "county": "Wasatch",
+  "type": "Town",
+  "pop": 71
+ },
+ {
+  "name": "Interlaken",
+  "county": "Wasatch",
+  "type": "Town",
+  "pop": 145
+ },
+ {
+  "name": "Ivins",
+  "county": "Washington",
+  "type": "City",
+  "pop": 9524
+ },
+ {
+  "name": "Joseph",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 546
+ },
+ {
+  "name": "Junction",
+  "county": "Piute",
+  "type": "Town",
+  "pop": 305
+ },
+ {
+  "name": "Kamas",
+  "county": "Summit",
+  "type": "City",
+  "pop": 2229
+ },
+ {
+  "name": "Kanab",
+  "county": "Kane",
+  "type": "City",
+  "pop": 4950
+ },
+ {
+  "name": "Kanarraville",
+  "county": "Iron",
+  "type": "Town",
+  "pop": 304
+ },
+ {
+  "name": "Kanosh",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 550
+ },
+ {
+  "name": "Kaysville",
+  "county": "Davis",
+  "type": "City",
+  "pop": 32861
+ },
+ {
+  "name": "Kearns",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 37058
+ },
+ {
+  "name": "Kingston",
+  "county": "Piute",
+  "type": "Town",
+  "pop": 329
+ },
+ {
+  "name": "Koosharem",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 294
+ },
+ {
+  "name": "La Verkin",
+  "county": "Washington",
+  "type": "City",
+  "pop": 4429
+ },
+ {
+  "name": "Laketown",
+  "county": "Rich",
+  "type": "Town",
+  "pop": 420
+ },
+ {
+  "name": "Lake Point",
+  "county": "Tooele",
+  "type": "City",
+  "pop": 2938
+ },
+ {
+  "name": "Layton",
+  "county": "Davis",
+  "type": "City",
+  "pop": 82512
+ },
+ {
+  "name": "Leamington",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 301
+ },
+ {
+  "name": "Leeds",
+  "county": "Washington",
+  "type": "Town",
+  "pop": 693
+ },
+ {
+  "name": "Lehi",
+  "county": "Utah",
+  "type": "City",
+  "pop": 81039
+ },
+ {
+  "name": "Levan",
+  "county": "Juab",
+  "type": "Town",
+  "pop": 886
+ },
+ {
+  "name": "Lewiston",
+  "county": "Cache",
+  "type": "City",
+  "pop": 2225
+ },
+ {
+  "name": "Lindon",
+  "county": "Utah",
+  "type": "City",
+  "pop": 11594
+ },
+ {
+  "name": "Loa",
+  "county": "Wayne",
+  "type": "Town",
+  "pop": 597
+ },
+ {
+  "name": "Logan",
+  "county": "Cache",
+  "type": "City",
+  "pop": 53923
+ },
+ {
+  "name": "Lyman",
+  "county": "Wayne",
+  "type": "Town",
+  "pop": 235
+ },
+ {
+  "name": "Lynndyl",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 142
+ },
+ {
+  "name": "Magna",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 29488
+ },
+ {
+  "name": "Manila",
+  "county": "Daggett",
+  "type": "Town",
+  "pop": 425
+ },
+ {
+  "name": "Manti",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 3532
+ },
+ {
+  "name": "Mantua",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 1642
+ },
+ {
+  "name": "Mapleton",
+  "county": "Utah",
+  "type": "City",
+  "pop": 12340
+ },
+ {
+  "name": "Marriott-Slaterville",
+  "county": "Weber",
+  "type": "City",
+  "pop": 1885
+ },
+ {
+  "name": "Marysvale",
+  "county": "Piute",
+  "type": "Town",
+  "pop": 522
+ },
+ {
+  "name": "Mayfield",
+  "county": "Sanpete",
+  "type": "Town",
+  "pop": 424
+ },
+ {
+  "name": "Meadow",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 246
+ },
+ {
+  "name": "Mendon",
+  "county": "Cache",
+  "type": "City",
+  "pop": 1446
+ },
+ {
+  "name": "Midvale",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 35736
+ },
+ {
+  "name": "Midway",
+  "county": "Wasatch",
+  "type": "City",
+  "pop": 6110
+ },
+ {
+  "name": "Milford",
+  "county": "Beaver",
+  "type": "City",
+  "pop": 1400
+ },
+ {
+  "name": "Millcreek",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 63342
+ },
+ {
+  "name": "Millville",
+  "county": "Cache",
+  "type": "City",
+  "pop": 1820
+ },
+ {
+  "name": "Minersville",
+  "county": "Beaver",
+  "type": "Town",
+  "pop": 901
+ },
+ {
+  "name": "Moab",
+  "county": "Grand",
+  "type": "City",
+  "pop": 5316
+ },
+ {
+  "name": "Mona",
+  "county": "Juab",
+  "type": "City",
+  "pop": 1647
+ },
+ {
+  "name": "Monroe",
+  "county": "Sevier",
+  "type": "City",
+  "pop": 2570
+ },
+ {
+  "name": "Monticello",
+  "county": "San Juan",
+  "type": "City",
+  "pop": 1941
+ },
+ {
+  "name": "Morgan",
+  "county": "Morgan",
+  "type": "City",
+  "pop": 4268
+ },
+ {
+  "name": "Moroni",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 1238
+ },
+ {
+  "name": "Mount Pleasant",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 3737
+ },
+ {
+  "name": "Murray",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 49904
+ },
+ {
+  "name": "Myton",
+  "county": "Duchesne",
+  "type": "City",
+  "pop": 662
+ },
+ {
+  "name": "Naples",
+  "county": "Uintah",
+  "type": "City",
+  "pop": 3217
+ },
+ {
+  "name": "Nephi",
+  "county": "Juab",
+  "type": "City",
+  "pop": 6700
+ },
+ {
+  "name": "New Harmony",
+  "county": "Washington",
+  "type": "Town",
+  "pop": 353
+ },
+ {
+  "name": "Newton",
+  "county": "Cache",
+  "type": "Town",
+  "pop": 899
+ },
+ {
+  "name": "Nibley",
+  "county": "Cache",
+  "type": "City",
+  "pop": 7651
+ },
+ {
+  "name": "North Logan",
+  "county": "Cache",
+  "type": "City",
+  "pop": 11228
+ },
+ {
+  "name": "North Ogden",
+  "county": "Weber",
+  "type": "City",
+  "pop": 21473
+ },
+ {
+  "name": "North Salt Lake",
+  "county": "Davis",
+  "type": "City",
+  "pop": 23239
+ },
+ {
+  "name": "Oak City",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 770
+ },
+ {
+  "name": "Oakley",
+  "county": "Summit",
+  "type": "City",
+  "pop": 1812
+ },
+ {
+  "name": "Ogden",
+  "county": "Weber",
+  "type": "City",
+  "pop": 86973
+ },
+ {
+  "name": "Orangeville",
+  "county": "Emery",
+  "type": "City",
+  "pop": 1281
+ },
+ {
+  "name": "Orderville",
+  "county": "Kane",
+  "type": "Town",
+  "pop": 865
+ },
+ {
+  "name": "Orem",
+  "county": "Utah",
+  "type": "City",
+  "pop": 97048
+ },
+ {
+  "name": "Panguitch",
+  "county": "Garfield",
+  "type": "City",
+  "pop": 1871
+ },
+ {
+  "name": "Paradise",
+  "county": "Cache",
+  "type": "Town",
+  "pop": 806
+ },
+ {
+  "name": "Paragonah",
+  "county": "Iron",
+  "type": "Town",
+  "pop": 678
+ },
+ {
+  "name": "Park City",
+  "county": "Summit/Wasatch",
+  "type": "City",
+  "pop": 8365
+ },
+ {
+  "name": "Parowan",
+  "county": "Iron",
+  "type": "City",
+  "pop": 3095
+ },
+ {
+  "name": "Payson",
+  "county": "Utah",
+  "type": "City",
+  "pop": 22205
+ },
+ {
+  "name": "Perry",
+  "county": "Box Elder",
+  "type": "City",
+  "pop": 5708
+ },
+ {
+  "name": "Plain City",
+  "county": "Weber",
+  "type": "City",
+  "pop": 8101
+ },
+ {
+  "name": "Pleasant Grove",
+  "county": "Utah",
+  "type": "City",
+  "pop": 37544
+ },
+ {
+  "name": "Pleasant View",
+  "county": "Weber",
+  "type": "City",
+  "pop": 11104
+ },
+ {
+  "name": "Plymouth",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 394
+ },
+ {
+  "name": "Portage",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 223
+ },
+ {
+  "name": "Price",
+  "county": "Carbon",
+  "type": "City",
+  "pop": 8216
+ },
+ {
+  "name": "Providence",
+  "county": "Cache",
+  "type": "City",
+  "pop": 8675
+ },
+ {
+  "name": "Provo",
+  "county": "Utah",
+  "type": "City",
+  "pop": 114303
+ },
+ {
+  "name": "Randolph",
+  "county": "Rich",
+  "type": "Town",
+  "pop": 772
+ },
+ {
+  "name": "Redmond",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 773
+ },
+ {
+  "name": "Richfield",
+  "county": "Sevier",
+  "type": "City",
+  "pop": 8173
+ },
+ {
+  "name": "Richmond",
+  "county": "Cache",
+  "type": "City",
+  "pop": 2971
+ },
+ {
+  "name": "Riverdale",
+  "county": "Weber",
+  "type": "City",
+  "pop": 2179
+ },
+ {
+  "name": "River Heights",
+  "county": "Cache",
+  "type": "City",
+  "pop": 9294
+ },
+ {
+  "name": "Riverton",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 44944
+ },
+ {
+  "name": "Rockville",
+  "county": "Washington",
+  "type": "Town",
+  "pop": 169
+ },
+ {
+  "name": "Rocky Ridge",
+  "county": "Juab",
+  "type": "Town",
+  "pop": 901
+ },
+ {
+  "name": "Roosevelt",
+  "county": "Duchesne",
+  "type": "City",
+  "pop": 6960
+ },
+ {
+  "name": "Roy",
+  "county": "Weber",
+  "type": "City",
+  "pop": 39021
+ },
+ {
+  "name": "Rush Valley",
+  "county": "Tooele",
+  "type": "Town",
+  "pop": 425
+ },
+ {
+  "name": "Salem",
+  "county": "Utah",
+  "type": "City",
+  "pop": 9893
+ },
+ {
+  "name": "Salina",
+  "county": "Sevier",
+  "type": "City",
+  "pop": 2521
+ },
+ {
+  "name": "Salt Lake City",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 203888
+ },
+ {
+  "name": "Sandy",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 94723
+ },
+ {
+  "name": "Santa Clara",
+  "county": "Washington",
+  "type": "City",
+  "pop": 7891
+ },
+ {
+  "name": "Santaquin",
+  "county": "Utah/Juab",
+  "type": "City",
+  "pop": 15391
+ },
+ {
+  "name": "Saratoga Springs",
+  "county": "Utah",
+  "type": "City",
+  "pop": 44070
+ },
+ {
+  "name": "Scipio",
+  "county": "Millard",
+  "type": "Town",
+  "pop": 435
+ },
+ {
+  "name": "Scofield",
+  "county": "Carbon",
+  "type": "Town",
+  "pop": 33
+ },
+ {
+  "name": "Sigurd",
+  "county": "Sevier",
+  "type": "Town",
+  "pop": 453
+ },
+ {
+  "name": "Smithfield",
+  "county": "Cache",
+  "type": "City",
+  "pop": 14033
+ },
+ {
+  "name": "Snowville",
+  "county": "Box Elder",
+  "type": "Town",
+  "pop": 246
+ },
+ {
+  "name": "South Jordan",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 80331
+ },
+ {
+  "name": "South Ogden",
+  "county": "Weber",
+  "type": "City",
+  "pop": 17563
+ },
+ {
+  "name": "South Salt Lake",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 26277
+ },
+ {
+  "name": "South Weber",
+  "county": "Davis",
+  "type": "City",
+  "pop": 8037
+ },
+ {
+  "name": "Spanish Fork",
+  "county": "Utah",
+  "type": "City",
+  "pop": 43632
+ },
+ {
+  "name": "Spring City",
+  "county": "Sanpete",
+  "type": "City",
+  "pop": 1094
+ },
+ {
+  "name": "Springdale",
+  "county": "Washington",
+  "type": "Town",
+  "pop": 416
+ },
+ {
+  "name": "Springville",
+  "county": "Utah",
+  "type": "City",
+  "pop": 35474
+ },
+ {
+  "name": "St. George",
+  "county": "Washington",
+  "type": "City",
+  "pop": 99184
+ },
+ {
+  "name": "Sterling",
+  "county": "Sanpete",
+  "type": "Town",
+  "pop": 303
+ },
+ {
+  "name": "Stockton",
+  "county": "Tooele",
+  "type": "Town",
+  "pop": 897
+ },
+ {
+  "name": "Sunset",
+  "county": "Davis",
+  "type": "City",
+  "pop": 5567
+ },
+ {
+  "name": "Syracuse",
+  "county": "Davis",
+  "type": "City",
+  "pop": 34009
+ },
+ {
+  "name": "Tabiona",
+  "county": "Duchesne",
+  "type": "Town",
+  "pop": 157
+ },
+ {
+  "name": "Taylorsville",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 59010
+ },
+ {
+  "name": "Tooele",
+  "county": "Tooele",
+  "type": "City",
+  "pop": 37265
+ },
+ {
+  "name": "Toquerville",
+  "county": "Washington",
+  "type": "City",
+  "pop": 2115
+ },
+ {
+  "name": "Torrey",
+  "county": "Wayne",
+  "type": "Town",
+  "pop": 332
+ },
+ {
+  "name": "Tremonton",
+  "county": "Box Elder",
+  "type": "City",
+  "pop": 10886
+ },
+ {
+  "name": "Trenton",
+  "county": "Cache",
+  "type": "Town",
+  "pop": 534
+ },
+ {
+  "name": "Tropic",
+  "county": "Garfield",
+  "type": "Town",
+  "pop": 537
+ },
+ {
+  "name": "Uintah",
+  "county": "Weber",
+  "type": "City",
+  "pop": 1461
+ },
+ {
+  "name": "Vernal",
+  "county": "Uintah",
+  "type": "City",
+  "pop": 10254
+ },
+ {
+  "name": "Vernon",
+  "county": "Tooele",
+  "type": "Town",
+  "pop": 324
+ },
+ {
+  "name": "Vineyard",
+  "county": "Utah",
+  "type": "City",
+  "pop": 13510
+ },
+ {
+  "name": "Virgin",
+  "county": "Washington",
+  "type": "Town",
+  "pop": 734
+ },
+ {
+  "name": "Wales",
+  "county": "Sanpete",
+  "type": "Town",
+  "pop": 345
+ },
+ {
+  "name": "Wallsburg",
+  "county": "Wasatch",
+  "type": "Town",
+  "pop": 266
+ },
+ {
+  "name": "Washington",
+  "county": "Washington",
+  "type": "City",
+  "pop": 30686
+ },
+ {
+  "name": "Washington Terrace",
+  "county": "Weber",
+  "type": "City",
+  "pop": 9196
+ },
+ {
+  "name": "Wellington",
+  "county": "Carbon",
+  "type": "City",
+  "pop": 1526
+ },
+ {
+  "name": "Wellsville",
+  "county": "Cache",
+  "type": "City",
+  "pop": 4120
+ },
+ {
+  "name": "Wendover",
+  "county": "Tooele",
+  "type": "City",
+  "pop": 1264
+ },
+ {
+  "name": "West Bountiful",
+  "county": "Davis",
+  "type": "City",
+  "pop": 5920
+ },
+ {
+  "name": "West Haven",
+  "county": "Weber",
+  "type": "City",
+  "pop": 19977
+ },
+ {
+  "name": "West Jordan",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 116277
+ },
+ {
+  "name": "West Point",
+  "county": "Davis",
+  "type": "City",
+  "pop": 11559
+ },
+ {
+  "name": "West Valley City",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 137955
+ },
+ {
+  "name": "White City",
+  "county": "Salt Lake",
+  "type": "City",
+  "pop": 5568
+ },
+ {
+  "name": "Willard",
+  "county": "Box Elder",
+  "type": "City",
+  "pop": 2008
+ },
+ {
+  "name": "Woodland Hills",
+  "county": "Utah",
+  "type": "City",
+  "pop": 1439
+ },
+ {
+  "name": "Woodruff",
+  "county": "Rich",
+  "type": "Town",
+  "pop": 302
+ },
+ {
+  "name": "Woods Cross",
+  "county": "Davis",
+  "type": "City",
+  "pop": 11490
+ }
+]
