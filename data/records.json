@@ -1,5 +1,599 @@
-"documents": [
-  { "type": "policy",    "label": "Clinton City ALPR policy (PDF)",           "url": "docs/clinton-alpr-policy.pdf" },
-  { "type": "financial", "label": "Flock Safety contract / financials (PDF)", "url": "docs/clinton-flock-contract.pdf" }
-]
-
+{
+  "_help": "This is the only file you need to edit. See README.md for the field guide. City names must exactly match data/municipalities.json.",
+  "formUrl": "https://forms.gle/REPLACE_WITH_YOUR_FORM_ID",
+  "lastUpdated": "2026-07-15",
+  "records": {
+    "Alpine": {
+      "status": "flock",
+      "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
+      "vendor": "Flock Safety",
+      "note": "30-day data retention per agency policy.",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Flock transparency portal",
+          "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Cedar City": {
+      "status": "flock",
+      "agency": "Cedar City Police Department",
+      "vendor": "Flock Safety",
+      "cameras": 44,
+      "since": "by July 2025",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://transparency.flocksafety.com/ut-cedar-city-pd"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Flock transparency portal",
+          "url": "https://transparency.flocksafety.com/ut-cedar-city-pd"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Cedar Hills": {
+      "status": "flock",
+      "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
+      "vendor": "Flock Safety",
+      "note": "30-day data retention per agency policy.",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Flock transparency portal",
+          "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Centerville": {
+      "status": "flock",
+      "agency": "Centerville Police Department",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Clearfield": {
+      "status": "flock",
+      "agency": "Clearfield Police Department",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://clearfield.city/wp-content/uploads/2024/04/ALPR-Special-Use-Permit.pdf"
+        }
+      ],
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Clinton": {
+      "status": "flock",
+      "agency": "Clinton Police Department",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "submitted": true,
+      "submittedNote": "Policy and contract/financial documents provided directly by Clinton City.",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Clinton City ALPR policy (PDF)",
+          "url": "docs/clinton-alpr-policy.pdf"
+        },
+        {
+          "type": "financial",
+          "label": "Flock Safety contract / financial terms (PDF)",
+          "url": "ocs/clinton-flock-contract.pdf"
+        }
+      ],
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Grantsville": {
+      "status": "flock",
+      "agency": "Grantsville Police Department",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Highland": {
+      "status": "flock",
+      "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
+      "vendor": "Flock Safety",
+      "cameras": 7,
+      "note": "30-day data retention per agency policy.",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Flock transparency portal",
+          "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Kaysville": {
+      "status": "flock",
+      "agency": "Kaysville Police Department",
+      "vendor": "Flock Safety",
+      "cameras": 5,
+      "since": "Sept. 2025",
+      "sources": [
+        {
+          "label": "Public records (Pittsboro PD Flock shared-devices list)",
+          "url": "https://www.documentcloud.org/documents/26182924-pittsboro-police-department-flock-safety-shared-devices-list/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Loa": {
+      "status": "flock",
+      "agency": "Wayne County Sheriff's Office",
+      "vendor": "Flock Safety",
+      "cameras": 36,
+      "financial": "Utah's #2 Flock spender: $95,100 paid in 2025",
+      "sources": [
+        {
+          "label": "MuckRock public-records release",
+          "url": "https://www.muckrock.com/foi/johnson-county-2662/texas-public-records-act-request-flock-safety-search-audits-network-sharing-and-general-order-johnson-county-sheriff-189749/#files"
+        },
+        {
+          "label": "KUER: Ogden is Utah's biggest Flock spender",
+          "url": "https://www.kuer.org/politics-government/2026-01-21/ogden-is-utahs-biggest-spender-on-flock-cameras-heres-how-the-city-uses-them"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Nephi": {
+      "status": "flock",
+      "agency": "Nephi Police Department / Juab County Sheriff",
+      "vendor": "Flock Safety",
+      "cameras": 3,
+      "since": "Sept. 2025",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "North Ogden": {
+      "status": "flock",
+      "agency": "North Ogden Police Department",
+      "vendor": "Flock Safety",
+      "since": "2023 (trial)",
+      "sources": [
+        {
+          "label": "North Ogden City Council minutes, Apr 2023",
+          "url": "https://cms3.revize.com/revize/northogdencity/Documents/Government/City%20Council/Agendas,%20Minutes,%20And%20Public%20Notices/2023/Minutes/cc041123_final_-_signed.pdf"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "North Salt Lake": {
+      "status": "flock",
+      "agency": "North Salt Lake City Police",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Ogden": {
+      "status": "flock",
+      "agency": "Ogden Police Department",
+      "vendor": "Flock Safety + legacy in-house ALPR (since 2009)",
+      "cameras": 41,
+      "financial": "Utah's #1 Flock spender: $123,000 paid in 2025 (mostly grant-funded)",
+      "note": "30-day retention (stricter than the state's 9-month maximum); searches require a sergeant/Area Tactical Analysis Center and a case number.",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://www.ogdencity.com/DocumentCenter/View/12979/Policy-65-License-Plate-Readerpdf"
+        }
+      ],
+      "sources": [
+        {
+          "label": "KUER: Ogden is Utah's biggest Flock spender",
+          "url": "https://www.kuer.org/politics-government/2026-01-21/ogden-is-utahs-biggest-spender-on-flock-cameras-heres-how-the-city-uses-them"
+        },
+        {
+          "label": "KUTV: ALPR privacy concerns",
+          "url": "https://kutv.com/news/local/automatic-license-plate-reading-cameras-raise-concerns-over-privacy"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Orem": {
+      "status": "flock",
+      "agency": "Orem Police Department",
+      "vendor": "Flock Safety",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Plain City": {
+      "status": "flock",
+      "agency": "Weber County Sheriff's Office (contracted)",
+      "vendor": "Flock Safety",
+      "cameras": 6,
+      "since": "2021",
+      "sources": [
+        {
+          "label": "Plain City Council minutes, Sept 2021",
+          "url": "https://web.archive.org/web/20211018144505/https://plaincityutah.org/wp-content/uploads/2021/10/CC091621M.pdf"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Pleasant Grove": {
+      "status": "flock",
+      "agency": "Pleasant Grove Police Department",
+      "vendor": "Flock Safety",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Provo": {
+      "status": "flock",
+      "agency": "Provo Police Department",
+      "vendor": "Flock Safety",
+      "cameras": 21,
+      "since": "April 2023",
+      "financial": "$75,406 paid to Flock Safety in 2025 (3rd-highest in Utah)",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://www.provo.gov/m/newsflash/Home/Detail/225"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Provo City ALPR FAQ",
+          "url": "https://www.provo.gov/m/newsflash/Home/Detail/225"
+        },
+        {
+          "label": "KUER: Ogden is Utah's biggest Flock spender",
+          "url": "https://www.kuer.org/politics-government/2026-01-21/ogden-is-utahs-biggest-spender-on-flock-cameras-heres-how-the-city-uses-them"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Salem": {
+      "status": "flock",
+      "agency": "Salem Police Department",
+      "vendor": "Flock Safety",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Salina": {
+      "status": "flock",
+      "agency": "Salina City Police Department",
+      "vendor": "Flock Safety",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://www.salina.utah.gov/government/police/index.php"
+        }
+      ],
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Sandy": {
+      "status": "alpr_other",
+      "note": "No confirmed Flock/ALPR deployment found; PD runs a voluntary private-camera registry (\"Virtual Business Watch\"), which is a different technology.",
+      "sources": [
+        {
+          "label": "Sandy City camera registry",
+          "url": "https://www.sandy.utah.gov/departments/police-department/virtual-business-watch"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Saratoga Springs": {
+      "status": "flock",
+      "agency": "Saratoga Springs Police Department",
+      "vendor": "Flock Safety",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://www.saratogasprings-ut.gov/DocumentCenter/View/11922/Automated-License-Plate-Readers-Policy-PDF?bidId="
+        }
+      ],
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "South Jordan": {
+      "status": "alpr_other",
+      "note": "No confirmed ALPR; department has used Geolitica/PredPol predictive-policing software since 2016 (different surveillance technology).",
+      "sources": [
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "South Salt Lake": {
+      "status": "flock",
+      "agency": "South Salt Lake Police",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Spanish Fork": {
+      "status": "flock",
+      "agency": "Spanish Fork Police Department",
+      "vendor": "Flock Safety",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://transparency.flocksafety.com/spanish-fork-ut-pd"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Flock transparency portal",
+          "url": "https://transparency.flocksafety.com/spanish-fork-ut-pd"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Springville": {
+      "status": "flock",
+      "agency": "Springville Police Department",
+      "vendor": "Flock Safety",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "St. George": {
+      "status": "alpr_other",
+      "agency": "St. George Police Dept. & Washington County Sheriff's Office",
+      "vendor": "Unspecified (not confirmed as Flock)",
+      "since": "at least 2012",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://news.washeriff.net/wp-content/uploads/2023/08/Automated_License_Plate_Readers__ALPRs.pdf"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Salt Lake Tribune archive",
+          "url": "https://archive.sltrib.com/article.php?id=54341662&itype=CMSID"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "Tooele": {
+      "status": "flock",
+      "agency": "Tooele City PD & Tooele County Sheriff's Office",
+      "vendor": "Flock Safety",
+      "since": "2022",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://tooelecountysheriff.org/wp-content/uploads/2023/07/Policy-469-ALPRs.pdf"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Fox13: Tooele police utilizing Flock cameras",
+          "url": "https://www.fox13now.com/news/local-news/tooele-police-utilizing-flock-safety-cameras-to-help-curb-crime"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "West Jordan": {
+      "status": "flock",
+      "agency": "West Jordan Police Department",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    },
+    "West Valley City": {
+      "status": "flock",
+      "agency": "West Valley City Police Department",
+      "vendor": "Flock Safety",
+      "since": "2025",
+      "documents": [
+        {
+          "type": "policy",
+          "label": "Official policy document",
+          "url": "https://www.wvc-ut.gov/DocumentCenter/View/11639/WVCPD-Policy-Manual-Revised-092425?bidId="
+        }
+      ],
+      "sources": [
+        {
+          "label": "KSL NewsRadio",
+          "url": "https://kslnewsradio.com/crime-police-courts/camera-system-police/2192505/"
+        },
+        {
+          "label": "Atlas of Surveillance (EFF)",
+          "url": "https://www.atlasofsurveillance.org/search?location=Utah"
+        }
+      ]
+    }
+  }
+}
