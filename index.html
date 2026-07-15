@@ -407,15 +407,6 @@ async function loadData(){
 }
 
 
-const DATA = BASE.map(b => {
-  const rec = RECORDS[b.name] || {};
-  return Object.assign({
-    status: "unknown", agency: null, vendor: null, cameras: null,
-    since: null, financial: null, note: null, submitted: false,
-    submittedNote: null, documents: [], sources: []
-  }, b, rec);
-});
-
 const statusMeta = {
   flock: {label:"Confirmed Flock", dotClass:"flock"},
   alpr_other: {label:"Confirmed ALPR", dotClass:"alpr_other"},
@@ -460,8 +451,8 @@ function renderChips(){
   el.querySelectorAll(".chip").forEach(chip=>{
     chip.addEventListener("click", ()=>{
       state.status = chip.dataset.status;
-      
-      
+      renderChips();
+      renderTable();
     });
   });
 }
@@ -473,7 +464,7 @@ function renderCountySelect(){
     opt.value = c; opt.textContent = c + " County";
     sel.appendChild(opt);
   });
-  sel.addEventListener("change", ()=>{ state.county = sel.value;  });
+  sel.addEventListener("change", ()=>{ state.county = sel.value; renderTable(); });
 }
 
 function fmtField(label, value){
@@ -574,11 +565,11 @@ function renderTable(){
 
 document.getElementById("search").addEventListener("input", (e)=>{
   state.q = e.target.value;
-  
+  renderTable();
 });
 document.getElementById("sortSel").addEventListener("change", (e)=>{
   state.sort = e.target.value;
-  
+  renderTable();
 });
 
 
