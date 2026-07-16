@@ -1,17 +1,22 @@
 {
   "_help": "This is the only file you need to edit. See README.md for the field guide. City names must exactly match data/municipalities.json.",
   "formUrl": "https://forms.gle/REPLACE_WITH_YOUR_FORM_ID",
-  "lastUpdated": "2026-07-15",
+  "lastUpdated": "2026-07-16",
   "records": {
     "Alpine": {
       "status": "flock",
       "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
       "vendor": "Flock Safety",
-      "note": "30-day data retention per agency policy.",
+      "note": "Written policy (Lexipol Policy 461) allows retention up to the state's nine-month maximum; the department's Flock transparency portal reports 30-day retention in practice.",
       "documents": [
         {
           "type": "policy",
-          "label": "Official policy document",
+          "label": "Lone Peak PD ALPR policy (PDF)",
+          "url": "https://lonepeakpolice.com/wp-content/uploads/sites/5/2024/12/ALPR-Policy-Lone-Peak-Police.pdf"
+        },
+        {
+          "type": "transparency",
+          "label": "Flock transparency portal \u2014 Lone Peak PD",
           "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
         }
       ],
@@ -34,8 +39,8 @@
       "since": "by July 2025",
       "documents": [
         {
-          "type": "policy",
-          "label": "Official policy document",
+          "type": "transparency",
+          "label": "Flock transparency portal \u2014 Cedar City PD",
           "url": "https://transparency.flocksafety.com/ut-cedar-city-pd"
         }
       ],
@@ -54,11 +59,16 @@
       "status": "flock",
       "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
       "vendor": "Flock Safety",
-      "note": "30-day data retention per agency policy.",
+      "note": "Written policy (Lexipol Policy 461) allows retention up to the state's nine-month maximum; the department's Flock transparency portal reports 30-day retention in practice.",
       "documents": [
         {
           "type": "policy",
-          "label": "Official policy document",
+          "label": "Lone Peak PD ALPR policy (PDF)",
+          "url": "https://lonepeakpolice.com/wp-content/uploads/sites/5/2024/12/ALPR-Policy-Lone-Peak-Police.pdf"
+        },
+        {
+          "type": "transparency",
+          "label": "Flock transparency portal \u2014 Lone Peak PD",
           "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
         }
       ],
@@ -123,12 +133,12 @@
         {
           "type": "policy",
           "label": "Clinton City ALPR policy (PDF)",
-          "url": "docs/clinton-alpr-policy.pdf"
+          "url": "REPLACE_WITH_CLINTON_POLICY_URL"
         },
         {
           "type": "financial",
           "label": "Flock Safety contract / financial terms (PDF)",
-          "url": "docs/clinton-flock-contract.pdf"
+          "url": "REPLACE_WITH_CLINTON_CONTRACT_URL"
         }
       ],
       "sources": [
@@ -163,11 +173,16 @@
       "agency": "Lone Peak Police Department (serves Alpine, Cedar Hills & Highland)",
       "vendor": "Flock Safety",
       "cameras": 7,
-      "note": "30-day data retention per agency policy.",
+      "note": "Written policy (Lexipol Policy 461) allows retention up to the state's nine-month maximum; the department's Flock transparency portal reports 30-day retention in practice.",
       "documents": [
         {
           "type": "policy",
-          "label": "Official policy document",
+          "label": "Lone Peak PD ALPR policy (PDF)",
+          "url": "https://lonepeakpolice.com/wp-content/uploads/sites/5/2024/12/ALPR-Policy-Lone-Peak-Police.pdf"
+        },
+        {
+          "type": "transparency",
+          "label": "Flock transparency portal \u2014 Lone Peak PD",
           "url": "https://transparency.flocksafety.com/lone-peak-ut-pd"
         }
       ],
@@ -479,8 +494,8 @@
       "vendor": "Flock Safety",
       "documents": [
         {
-          "type": "policy",
-          "label": "Official policy document",
+          "type": "transparency",
+          "label": "Flock transparency portal \u2014 Spanish Fork PD",
           "url": "https://transparency.flocksafety.com/spanish-fork-ut-pd"
         }
       ],
