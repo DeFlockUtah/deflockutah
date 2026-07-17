@@ -38,6 +38,11 @@
       "cameras": 44,
       "since": "by July 2025",
       "documents": [
+              {
+          "type": "policy",
+          "label": "Cedar City PD ALPR policy (PDF)",
+          "url": "https://www.cedarcityut.gov/DocumentCenter/View/17940/428-Automated-License-Plate-Readers-ALPRs"
+        },
         {
           "type": "transparency",
           "label": "Flock transparency portal \u2014 Cedar City PD",
