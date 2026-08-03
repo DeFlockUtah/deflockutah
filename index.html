@@ -286,11 +286,15 @@
   <div class="eyebrow">Live tracker · Utah, USA</div>
   <h1 class="title">DeFlock <span>Utah</span></h1>
   <p class="dek">Every incorporated city and town in Utah, checked against public records for <b>automated license plate reader (ALPR)</b> and <b>Flock Safety</b> camera deployments — with links to each department's policy and what it's spending public money on.</p>
-<!--
+
   <div class="capture-card" id="statCard"></div>
-  <a id="submitBtn" href="https://forms.gle/REPLACE_WITH_YOUR_FORM_ID" target="_blank" rel="noopener" class="submit-btn">+ Submit a record for your city</a>
+  <p class="dek" style="margin:26px 0 12px;">Have your city's ALPR policy, Flock contract, meeting minutes, or a records-request response? Send it over and it will be added to the tracker, with credit if you want it.</p>
+  <a id="contactBtn" href="mailto:deflockutah@proton.me?subject=ALPR%20records%20submission" class="submit-btn">✉ Contact me to submit documents</a>
+  <!-- Google Form submission — re-enable by uncommenting and setting formUrl in data/records.json
+  <a id="submitBtn" href="#" target="_blank" rel="noopener" class="submit-btn">+ Submit a record for your city</a>
+  -->
 </header>
--->
+
 <div class="controls-wrap">
   <div class="controls" id="statusChips"></div>
   <div class="controls">
@@ -349,7 +353,7 @@
   DeFlock Utah is an independent civic-transparency project, not affiliated with Flock Safety, DeFlock.me, or the State of Utah.
   Status marked "unknown" means no public record was found during this research pass — it does not mean a city has no cameras.
   Data compiled July 2026 from the sources linked above. Utah retention/search-policy baseline: Utah Code §41-6a-2005 (nine-month data retention cap).
-  Found an error or have a public record for a city marked unknown? Cross-check it with the sources above.
+  Found an error, or have a policy, contract, or records-request response for any city? Email <a href="mailto:deflockutah@proton.me">deflockutah@proton.me</a>.
 </footer>
 
 <script>
@@ -359,7 +363,8 @@
                    data/municipalities.json  (base list, don't edit)
    ════════════════════════════════════════════════════════════ */
 
-let FORM_URL = "#";
+const CONTACT_EMAIL = "deflockutah@proton.me";
+let FORM_URL = "#"; // unused while Google Form submissions are disabled
 let DATA = [];
 
 async function fetchJSON(path){
@@ -378,7 +383,7 @@ async function loadData(){
   try{
     const BASE = await fetchJSON("data/municipalities.json");
     const recFile = await fetchJSON("data/records.json");
-    FORM_URL = recFile.formUrl || "#";
+    // FORM_URL = recFile.formUrl || "#"; // re-enable when Google Form submissions come back
     const RECORDS = recFile.records || {};
 
     // Warn (in console) about record keys that don't match any city
@@ -442,7 +447,7 @@ function renderStatCard(){
     <div class="capture-cell"><div class="capture-num" style="color:var(--line-yellow)">${other}</div><div class="capture-label">Confirmed ALPR (other)</div></div>
     <div class="capture-cell"><div class="capture-num" style="color:var(--unknown-gray)">${unknown}</div><div class="capture-label">No record found yet</div></div>
   `;
-  document.getElementById("submitBtn").href = FORM_URL;
+  // document.getElementById("submitBtn").href = FORM_URL; // re-enable with the Google Form button
 }
 
 function renderChips(){
@@ -514,7 +519,7 @@ function detailHTML(d){
     html += `<div class="srcs">Sources: ` + d.sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join("") + `</div>`;
   }
   if(d.status === "unknown"){
-    html += `<div class="verify">No public record found for ${d.name} yet. Check <a href="https://transparent.utah.gov/" target="_blank" rel="noopener">Transparent Utah</a> (search vendor "Flock Safety"), <a href="https://www.atlasofsurveillance.org/search?location=${encodeURIComponent(d.name+', UT')}" target="_blank" rel="noopener">Atlas of Surveillance</a>, or that city's council-meeting minutes. <a href="${FORM_URL}" target="_blank" rel="noopener" class="submit-link">Submit a record for ${d.name} →</a></div>`;
+    html += `<div class="verify">No public record found for ${d.name} yet. Check <a href="https://transparent.utah.gov/" target="_blank" rel="noopener">Transparent Utah</a> (search vendor "Flock Safety"), <a href="https://www.atlasofsurveillance.org/search?location=${encodeURIComponent(d.name+', UT')}" target="_blank" rel="noopener">Atlas of Surveillance</a>, or that city's council-meeting minutes. <a href="mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('ALPR records for ' + d.name)}" class="submit-link">Have records for ${d.name}? Email them →</a></div>`;
   }
   return html;
 }
